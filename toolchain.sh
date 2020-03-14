@@ -110,8 +110,8 @@ then
 	JOBS="$(num_cpus)"
 fi
 
-PSPDEV="$(realpath "$PSPDEV")"
-SOURCE="$(realpath "$SOURCE")"
+# PSPDEV="$(realpath "$PSPDEV")"
+# SOURCE="$(realpath "$SOURCE")"
 
 PSPDEV_TMPDIR="$(mktemp -dt pspdev-tmp-XXXXXX)"
 
@@ -210,7 +210,8 @@ else
 		if echo "$SCRIPT" | grep -F '/' >/dev/null 2>&1
 		then
 			# Plain file path.
-			run_script "$(cd .. && realpath "$SCRIPT")" build
+			# run_script "$(cd .. && realpath "$SCRIPT")" build
+			run_script "$(cd .. && "$SCRIPT")" build
 		elif [ -e "../scripts/$SCRIPT" ]
 		then
 			# Script file name
