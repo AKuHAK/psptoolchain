@@ -3,8 +3,8 @@
 
 . ../depends.sh
 
-check_headers	libELF			elf.h libelf.h gelf.h
-check_headers	'libUSB (legacy)'	usb.h
-check_headers	NCurses			ncurses.h
-check_headers	ZLib			zlib.h
-check_headers	'GNU Readline'		readline/readline.h
+# check_headers	libELF			elf.h libelf.h gelf.h
+# check_headers	'libUSB (legacy)'	usb.h
+# check_headers	NCurses			ncurses.h
+# check_headers	ZLib			zlib.h
+# check_headers	'GNU Readline'		readline/readline.h
