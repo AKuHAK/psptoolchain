@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+    types: [run_build, run_release, run_build_ps2sdk, run_release_ps2sdk, run_build_ps2client, run_release_ps2client]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install Ubuntu texinfo bison flex
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install autoconf automake bison bzip2 cmake doxygen flex gettext g++ gcc git gzip \
+                                libarchive-dev libcurl4-openssl-dev libelf-dev libgpgme-dev libncurses5-dev \
+                                libreadline-dev libssl-dev libtool-bin libusb-dev m4 make patch pkg-config \
+                                python3 python3-venv subversion tar tcl texinfo unzip wget xz-utils
+    
+    - name: Create PSP Dev folder
+      run: |
+        sudo mkdir /usr/local/pspdev
+        sudo chmod -R 777 /usr/local/pspdev
+
+    - name: Runs all the stages in the shell
+      run: |
+        export PSPDEV=/usr/local/pspdev
+        export PATH=$PATH:$PSPDEV/bin
+        ./toolchain.sh
