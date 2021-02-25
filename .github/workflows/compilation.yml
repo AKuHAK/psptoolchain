@@ -11,7 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-latest, macOS-11, ubuntu-latest]
       fail-fast: false
 
     steps:
@@ -21,20 +21,17 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get -y install autoconf automake bison bzip2 flex gettext g++ \
-                                gcc git gzip libelf-dev libncurses5-dev \
-                                libreadline-dev libtool-bin make patch \
-                                subversion tar texinfo unzip wget xz-utils
+        sudo apt-get -y install gettext texinfo bison flex libncurses5-dev libgmp3-dev libmpfr-dev libmpc-dev
 
     - name: Install on Mac
-      if: matrix.os == 'macOS-latest'
+      if: startsWith( matrix.os, 'macOS' )
       run: |
         brew update
-        brew install autoconf automake bash bzip2 coreutils gnu-sed libelf \
-                     libtool wget xz
+        brew install gettext texinfo bison flex gnu-sed ncurses gsl gmp mpfr
 
     - name: Runs all stages
       run: |
+        export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
         export PSPDEV=$PWD/pspdev
         export PATH=$PATH:$PSPDEV/bin
         ./toolchain.sh
