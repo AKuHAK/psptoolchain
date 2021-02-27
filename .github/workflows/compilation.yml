@@ -34,4 +34,4 @@ jobs:
         export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
         export PSPDEV=$PWD/pspdev
         export PATH=$PATH:$PSPDEV/bin
-        ./toolchain.sh 1 2 3
+        ./toolchain.sh

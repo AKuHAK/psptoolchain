@@ -9,7 +9,7 @@ COPY . /src
 RUN apk add autoconf automake bzip2 gzip libtool ncurses-dev readline-dev xz zlib-dev \
     build-base bash gcc git make flex bison texinfo gmp-dev mpfr-dev mpc1-dev
 RUN mkdir $PSPDEV
-RUN cd /src && ./toolchain.sh 1 2 3
+RUN cd /src && ./toolchain.sh
 
 # Second stage
 FROM alpine:latest
