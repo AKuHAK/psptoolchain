@@ -21,13 +21,13 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get -y install texinfo bison flex libgmp3-dev libmpfr-dev libmpc-dev
+        sudo apt-get -y install gettext texinfo bison flex libgmp3-dev libmpfr-dev libmpc-dev
 
     - name: Install on Mac
       if: matrix.os == 'macOS-latest'
       run: |
         brew update
-        brew install texinfo bison flex gnu-sed gsl gmp mpfr
+        brew install gettext texinfo bison flex gnu-sed gsl gmp mpfr
 
     - name: Runs all stages
       run: |
