@@ -2,9 +2,9 @@
 # 002-gcc-stage1.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
 
 ## Download the source code.
-REPO_URL="https://github.com/pspdev/gcc.git"
+REPO_URL="https://github.com/fjtrujy/gcc.git"
 REPO_FOLDER="gcc"
-BRANCH_NAME="gcc-9.3.0-psp"
+BRANCH_NAME="allegrex-v9.3.0"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || exit 1
 else
