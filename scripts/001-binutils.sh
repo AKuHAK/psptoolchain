@@ -26,17 +26,11 @@ rm -rf build-$TARGET && mkdir build-$TARGET && cd build-$TARGET || { exit 1; }
   --prefix="$PSPDEV" \
   --target="$TARGET" \
   --enable-plugins \
-  --disable-nls \
-  --disable-separate-code \
-  --disable-sim \
   --disable-werror \
-  --disable-docs \
   $TARG_XTRA_OPTS || { exit 1; }
-
-cat Makefile
 
 ## Compile and install.
 make --quiet -j $PROC_NR clean || { exit 1; }
 make --quiet -j $PROC_NR || { exit 1; }
-make --quiet -r -j $PROC_NR install-strip || { exit 1; } # MAKEINF=true for disable docs isn't compiling in Alpine
+make --quiet -r -j $PROC_NR install MAKEINFO=true || { exit 1; } # MAKEINFO=true for disable docs isn't compiling in Alpine
 make --quiet -j $PROC_NR clean || { exit 1; }
