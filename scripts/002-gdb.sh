@@ -1,10 +1,12 @@
 #!/bin/bash
-# 001-binutils.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
+# 002-gdb.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
+
+# How we're using a legacy binutils version, gdb is not include inside (it comes after 2.25)
 
 ## Download the source code.
 REPO_URL="https://github.com/fjtrujy/binutils-gdb.git"
-REPO_FOLDER="binutils-gdb"
-BRANCH_NAME="allegrex-v2.23.2"
+REPO_FOLDER="gdb"
+BRANCH_NAME="allegrex-gdb-v7.5.1"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL $REPO_FOLDER && cd $REPO_FOLDER || exit 1
 else
@@ -27,10 +29,11 @@ rm -rf build-$TARGET && mkdir build-$TARGET && cd build-$TARGET || { exit 1; }
   --target="$TARGET" \
   --enable-plugins \
   --disable-werror \
+  --disable-sim \
   $TARG_XTRA_OPTS || { exit 1; }
 
 ## Compile and install.
 make --quiet -j $PROC_NR clean || { exit 1; }
-make --quiet -j $PROC_NR || { exit 1; }
-make --quiet -j $PROC_NR install-strip MAKEINFO=true || { exit 1; } # MAKEINFO=true for disable docs isn't compiling in Alpine
+make --quiet -j $PROC_NR CFLAGS="$CFLAGS -Wno-implicit-function-declaration" LDFLAGS="$LDFLAGS -s" || { exit 1; }
+make --quiet -j $PROC_NR install MAKEINFO=true || { exit 1; } # MAKEINFO=true for disable docs isn't compiling in Alpine
 make --quiet -j $PROC_NR clean || { exit 1; }

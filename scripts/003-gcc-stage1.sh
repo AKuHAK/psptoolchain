@@ -6,7 +6,7 @@ REPO_URL="https://github.com/fjtrujy/gcc.git"
 REPO_FOLDER="gcc"
 BRANCH_NAME="allegrex-v9.3.0"
 if test ! -d "$REPO_FOLDER"; then
-	git clone --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || exit 1
+	git clone --depth 1 -b $BRANCH_NAME $REPO_URL $REPO_FOLDER && cd $REPO_FOLDER || exit 1
 else
 	cd $REPO_FOLDER && git fetch origin && git reset --hard origin/${BRANCH_NAME} || exit 1
 fi

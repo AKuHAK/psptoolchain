@@ -18,7 +18,7 @@ jobs:
       run: |
         dnf -y update
         dnf -y install gcc gcc-c++ diffutils patch make git wget bzip2 
-        dnf -y install gettext texinfo bison flex gmp-devel mpfr-devel libmpc-devel
+        dnf -y install gettext texinfo bison flex ncurses-devel gmp-devel mpfr-devel libmpc-devel
         
     - name: Runs all the stages in the shell
       run: |
