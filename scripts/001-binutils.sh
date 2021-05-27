@@ -6,9 +6,9 @@ REPO_URL="https://github.com/fjtrujy/binutils-gdb.git"
 REPO_FOLDER="binutils-gdb"
 BRANCH_NAME="allegrex-v2.23.2"
 if test ! -d "$REPO_FOLDER"; then
-	git clone --depth 1 -b $BRANCH_NAME $REPO_URL $REPO_FOLDER && cd $REPO_FOLDER || exit 1
+	git clone --depth 1 -b $BRANCH_NAME $REPO_URL $REPO_FOLDER && cd $REPO_FOLDER || { exit 1; }
 else
-	cd $REPO_FOLDER && git fetch origin && git reset --hard origin/${BRANCH_NAME} || exit 1
+	cd $REPO_FOLDER && git fetch origin && git reset --hard origin/${BRANCH_NAME} || { exit 1; }
 fi
 
 TARGET="psp"
