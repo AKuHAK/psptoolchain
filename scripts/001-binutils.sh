@@ -31,6 +31,6 @@ rm -rf build-$TARGET && mkdir build-$TARGET && cd build-$TARGET || { exit 1; }
 
 ## Compile and install.
 make --quiet -j $PROC_NR clean || { exit 1; }
-make --quiet -j $PROC_NR || { exit 1; }
+make --quiet -j $PROC_NR MAKEINFO=true || { exit 1; }
 make --quiet -j $PROC_NR install-strip MAKEINFO=true || { exit 1; } # MAKEINFO=true for disable docs isn't compiling in Alpine
 make --quiet -j $PROC_NR clean || { exit 1; }
