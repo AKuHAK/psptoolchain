@@ -4,7 +4,7 @@
 ## Download the source code.
 REPO_URL="https://github.com/fjtrujy/newlib.git"
 REPO_FOLDER="newlib"
-BRANCH_NAME="allegrex-4.1.0-socket"
+BRANCH_NAME="allegrex-v4.1.0-lock"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else
@@ -16,10 +16,10 @@ TARGET="psp"
 ## Determine the maximum number of processes that Make can work with.
 PROC_NR=$(getconf _NPROCESSORS_ONLN)
 
-## Create and enter the toolchain/build directory
+# Create and enter the toolchain/build directory
 rm -rf build-$TARGET && mkdir build-$TARGET && cd build-$TARGET || { exit 1; }
 
-## Configure the build.
+# Configure the build.
 ../configure \
 	--prefix="$PSPDEV" \
 	--target="$TARGET" \
