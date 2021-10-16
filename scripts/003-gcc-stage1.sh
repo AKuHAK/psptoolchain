@@ -4,7 +4,7 @@
 ## Download the source code.
 REPO_URL="https://github.com/fjtrujy/gcc.git"
 REPO_FOLDER="gcc"
-BRANCH_NAME="allegrex-v9.3.0-alt"
+BRANCH_NAME="allegrex-v9.3.0-stdlibs"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL $REPO_FOLDER && cd $REPO_FOLDER || { exit 1; }
 else
