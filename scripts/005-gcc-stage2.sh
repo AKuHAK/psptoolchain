@@ -12,13 +12,19 @@ else
 fi
 
 TARGET="psp"
-
 OSVER=$(uname)
+
 ## Apple needs to pretend to be linux
-if [ ${OSVER:0:6} == Darwin ]; then
-	TARG_XTRA_OPTS="--build=i386-linux-gnu --host=i386-linux-gnu"
-else
-	TARG_XTRA_OPTS=""
+if [ "${OSVER:0:6}" == Darwin ]; then
+  TARG_XTRA_OPTS="--build=i386-linux-gnu --host=i386-linux-gnu"
+elif [ "${OSVER:0:10}" == MINGW64_NT ]; then
+  export lt_cv_sys_max_cmd_len=8000
+  export CC=x86_64-w64-mingw32-gcc
+  TARG_XTRA_OPTS="--host=x86_64-w64-mingw32"
+elif [ "${OSVER:0:10}" == MINGW32_NT ]; then
+  export lt_cv_sys_max_cmd_len=8000
+  export CC=i686-w64-mingw32-gcc
+  TARG_XTRA_OPTS="--host=i686-w64-mingw32"
 fi
 
 ## Determine the maximum number of processes that Make can work with.
