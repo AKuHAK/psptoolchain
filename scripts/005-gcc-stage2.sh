@@ -1,10 +1,10 @@
 #!/bin/bash
-# 004-gcc-stage2.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
+# gcc-stage2.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/gcc.git"
+REPO_URL="https://github.com/pspdev/gcc.git"
 REPO_FOLDER="gcc"
-BRANCH_NAME="allegrex-v9.3.0-stdlibs"
+BRANCH_NAME="allegrex-v9.3.0"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL && cd $REPO_FOLDER || { exit 1; }
 else
@@ -16,9 +16,9 @@ TARGET="psp"
 OSVER=$(uname)
 ## Apple needs to pretend to be linux
 if [ ${OSVER:0:6} == Darwin ]; then
-	TARG_XTRA_OPTS="--build=i386-linux-gnu --host=i386-linux-gnu --enable-cxx-flags=-G0"
+	TARG_XTRA_OPTS="--build=i386-linux-gnu --host=i386-linux-gnu"
 else
-	TARG_XTRA_OPTS="--enable-cxx-flags=-G0"
+	TARG_XTRA_OPTS=""
 fi
 
 ## Determine the maximum number of processes that Make can work with.

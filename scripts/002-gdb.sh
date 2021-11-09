@@ -1,10 +1,10 @@
 #!/bin/bash
-# 002-gdb.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
+# gdb.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
 
 # How we're using a legacy binutils version, gdb is not include inside (it comes after 2.25)
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/binutils-gdb.git"
+REPO_URL="https://github.com/pspdev/binutils-gdb.git"
 REPO_FOLDER="gdb"
 BRANCH_NAME="allegrex-gdb-v7.5.1"
 if test ! -d "$REPO_FOLDER"; then

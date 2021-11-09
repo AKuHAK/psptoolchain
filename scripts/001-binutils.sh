@@ -1,10 +1,10 @@
 #!/bin/bash
-# 001-binutils.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
+# binutils.sh by Francisco Javier Trujillo Mata (fjtrujy@gmail.com)
 
 ## Download the source code.
-REPO_URL="https://github.com/fjtrujy/binutils-gdb.git"
+REPO_URL="https://github.com/pspdev/binutils-gdb.git"
 REPO_FOLDER="binutils-gdb"
-BRANCH_NAME="allegrex-v2.23.2-alt"
+BRANCH_NAME="allegrex-v2.23.2"
 if test ! -d "$REPO_FOLDER"; then
 	git clone --depth 1 -b $BRANCH_NAME $REPO_URL $REPO_FOLDER && cd $REPO_FOLDER || { exit 1; }
 else
