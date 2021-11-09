@@ -53,20 +53,15 @@ if [ "$(uname)" == "Darwin" ]; then
   header_paths+=("`xcrun --show-sdk-path`/usr/include")
 fi
 
-check_header    libelf          elf.h libelf.h libelf/libelf.h gelf.h libelf/gelf.h
 check_header    ncurses         ncurses.h ncurses/ncurses.h
-check_header    zlib            zlib.h
 
 check_program   git
 check_program   wget
 check_program   patch
 check_program   tar
-check_program   unzip
 check_program   bzip2
-check_program   xz
 
 check_program   autoconf
-check_program   automake
 check_program   make
 check_program   gcc
 check_program   g++
